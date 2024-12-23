@@ -1,0 +1,56 @@
+services:
+  progressify_front:
+    build:
+      context: .
+      dockerfile: progressify_front_app/Dockerfile
+    depends_on:
+      - progressify_backend
+    ports:
+      - 3000:3000
+    networks:
+      - frontend_backend_network
+
+  progressify_backend:
+    build:
+      context: .
+      dockerfile: progressify_backend_app/Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8081"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - frontend_backend_network
+      - database_network
+
+  postgres:
+    image: postgres:16.3
+    container_name: progressify_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=progressify_database
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "progressify_database"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - database_network
+
+volumes:
+  postgres_data:
+
+networks:
+  frontend_backend_network:
+    driver: bridge
+  database_network:
+    driver: bridge
