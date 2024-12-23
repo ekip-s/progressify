@@ -1,0 +1,17 @@
+.trainingBlock summary {
+    font-size: 25px;
+    background-color: var(--background_color_app);
+    border-radius: 7px;
+    padding: 7px;
+    color: var(--text_app_color_2);
+    cursor: pointer;
+}
+
+.trainingBlock summary::marker {
+    display: none;
+    content: '';
+}
+
+.trainingBlock {
+    margin-top: 17px;
+}

@@ -1,0 +1,48 @@
+.statusModule {
+    margin-top: 10px;
+}
+
+.circle {
+    background-color: transparent;
+    color: var(--text_app_color_2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: help;
+}
+
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #555;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+/* Появление подсказки при наведении */
+.circle:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.arrow {
+    margin-left: 4px;
+    margin-right: 4px;
+    color: var(--text_app_color_2);
+    cursor: pointer;
+}
+
+.inactive {
+    opacity: 0.5;
+    pointer-events: none;
+}

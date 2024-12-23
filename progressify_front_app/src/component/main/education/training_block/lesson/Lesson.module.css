@@ -1,0 +1,16 @@
+.lesson {
+    background-color: var(--background_color_app);
+    border-radius: 7px;
+    padding: 4px;
+    width: 240px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.info h3 {
+    color: var(--text_app_color_2);
+}
+
+.info p {
+    color: var(--borders_color);
+}

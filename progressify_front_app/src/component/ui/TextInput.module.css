@@ -1,0 +1,33 @@
+.textInput {
+  background: transparent;
+  padding: 1px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper label {
+  margin-bottom: 3px;
+  color: var(--text_app_color_2);
+}
+
+.wrapper small {
+  margin-top: 2px;
+  color: var(--text_app_color_2);
+}
+
+.inputText {
+  padding: 3px;
+  border: none;
+  background-color: rgba(105, 105, 105, 0.685);
+  color: var(--text_app_color_2);
+  width: 15rem;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 15px;
+}

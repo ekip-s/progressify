@@ -1,0 +1,20 @@
+.newLesson {
+    background-color: var(--background_color_app);
+    border-radius: 7px;
+    padding: 4px;
+    width: 240px;
+    margin-bottom: 10px;
+}
+
+.info h3 {
+    color: var(--text_app_color_2);
+}
+
+.inputStyle {
+    width: 90%;
+}
+
+.lessonForm {
+    height: 100%;
+    width: 100%;
+}
