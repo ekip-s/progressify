@@ -1,6 +1,6 @@
 FROM node:20.11.0
 WORKDIR /app
-COPY package*.json ./
+COPY progressify_front_app/ ./
 RUN npm ci
 COPY . .
 EXPOSE 3000
