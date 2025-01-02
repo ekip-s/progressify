@@ -25,7 +25,11 @@ const useKeycloak = () => {
   const getUserInfo = () => {
     const token = getAccessToken();
     console.log(token);
-    const decodedToken = JSON.parse(atob(token.split(".")[1]));
+    const payloadBase64 = token
+      .split(".")[1]
+      .replace(/-/g, "+")
+      .replace(/_/g, "/");
+    const decodedToken = JSON.parse(atob(payloadBase64));
     return {
       token,
       clientId: decodedToken.sub,
