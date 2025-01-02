@@ -24,6 +24,7 @@ const useKeycloak = () => {
 
   const getUserInfo = () => {
     const token = getAccessToken();
+    console.log(token);
     const decodedToken = JSON.parse(atob(token.split(".")[1]));
     return {
       token,
