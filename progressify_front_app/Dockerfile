@@ -3,5 +3,5 @@ WORKDIR /app
 COPY progressify_front_app/ ./
 RUN npm ci
 COPY . .
-EXPOSE 5174
+EXPOSE 5173
 CMD ["npm", "run", "build"]
