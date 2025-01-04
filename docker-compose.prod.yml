@@ -6,9 +6,7 @@ services:
     depends_on:
       - progressify_backend
     ports:
-      - 5173:5173
-    volumes:
-      - ./dist:/app  
+      - 5173:5173 
     networks:
       - frontend_backend_network
 
