@@ -1,0 +1,9 @@
+.inputTextarea {
+    background-color: rgba(105, 105, 105, 0.685);
+    border-radius: 4px;
+    height: 100px;
+    width: 400px;
+    padding: 4px;
+    font-size: 15px;
+    color: var(--text_app_color_2);
+}

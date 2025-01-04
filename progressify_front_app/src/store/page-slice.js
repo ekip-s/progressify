@@ -13,7 +13,7 @@ const pageSlice = createSlice({
     },
     clearPage(state) {
       state.activePage = null;
-    }
+    },
   },
 });
 

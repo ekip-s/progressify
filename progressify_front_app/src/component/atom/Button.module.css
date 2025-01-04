@@ -1,0 +1,13 @@
+.button {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--accent_app_color);
+    font-size: 15px;
+    height: max-content;
+    letter-spacing: 1.5px;
+}
+
+.button:hover {
+    opacity: 0.7;
+}

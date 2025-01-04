@@ -8,6 +8,7 @@ import ru.progressify.model.education.Education;
 import ru.progressify.model.lesson.Lesson;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -41,7 +42,7 @@ public class TrainingBlock {
     @Enumerated(EnumType.ORDINAL)
     private StatusType status;
     @OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lesson> lessons;
+    private List<Lesson> lessons = new ArrayList<>();
 
     public TrainingBlock(Education education, TrainingBlockRequest trainingBlockRequest) {
         this.num = trainingBlockRequest.getNum();

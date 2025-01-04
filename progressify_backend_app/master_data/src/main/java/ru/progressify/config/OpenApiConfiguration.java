@@ -17,7 +17,7 @@ public class OpenApiConfiguration {
     @Value("${springdoc.swagger-ui.oauth-authorization-url}")
     private String authorizationUrl;
 
-    @Value("${http://localhost:8080/realms/dark_matter/protocol/openid-connect/token}")
+    @Value("${springdoc.swagger-ui.oauth-token-url}")
     private String tokenUrl;
 
     @Bean
