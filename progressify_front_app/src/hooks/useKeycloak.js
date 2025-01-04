@@ -24,7 +24,6 @@ const useKeycloak = () => {
 
   const getUserInfo = () => {
     const token = getAccessToken();
-    console.log(token);
     const payloadBase64 = token
       .split(".")[1]
       .replace(/-/g, "+")

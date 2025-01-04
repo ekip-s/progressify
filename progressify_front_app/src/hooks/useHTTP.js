@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import info from "../info/info.json";
 
 const useHTTP = ({ url, method, body, token, headers }) => {
   const [data, setData] = useState(null);
@@ -36,7 +35,10 @@ const useHTTP = ({ url, method, body, token, headers }) => {
       };
 
       try {
-        const response = await fetch(`${info.backendURL}${url}`, options);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}${url}`,
+          options,
+        );
 
         if (!response.ok) {
           throw new Error(`Ошибка HTTP: ${response.status}`);

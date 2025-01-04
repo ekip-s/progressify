@@ -1,5 +1,3 @@
-import info from "../info/info.json";
-
 const send = async ({
   url,
   method,
@@ -20,7 +18,10 @@ const send = async ({
   };
 
   try {
-    const response = await fetch(`${info.backendURL}${url}`, options);
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}${url}`,
+      options,
+    );
 
     if (!response.ok) {
       throw new Error(`Ошибка HTTP: ${response.status}`);

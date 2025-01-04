@@ -1,7 +1,7 @@
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "https://darkmatterauth.ru:8443",
+  url: process.env.REACT_APP_KEYCLOAK_URL,
   realm: "dark_matter",
   clientId: "progressify_react_app",
 });

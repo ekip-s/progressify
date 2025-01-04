@@ -32,12 +32,12 @@ const NewEducation = () => {
   };
 
   const transitionToNewEduHandler = (id) => {
-    dispatchActions(pageActions.setActivePage(id));
+    dispatchActions(pageActions.setActivePage(id.replace(/^"|"$/g, "")));
   };
 
   const clearPageHandler = () => {
     dispatchActions(pageActions.clearPage());
-  }
+  };
 
   return (
     <section className={styles.newEducation}>
@@ -45,7 +45,7 @@ const NewEducation = () => {
         <form onSubmit={createNewEduHandler}>
           <div className={styles.flexBox}>
             <h3>Новый курс:</h3>
-            <ClosingButton onClick={clearPageHandler}/>
+            <ClosingButton onClick={clearPageHandler} />
           </div>
           <div>
             <TextInput

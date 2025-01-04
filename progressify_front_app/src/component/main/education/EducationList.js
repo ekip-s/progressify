@@ -44,8 +44,6 @@ const EducationList = () => {
             {data.map((edu) => (
               <Education key={edu.id} edu={edu} setData={setData} />
             ))}
-            {console.log(token)}
-            {console.log(clientId)}
           </tbody>
         </table>
       );
