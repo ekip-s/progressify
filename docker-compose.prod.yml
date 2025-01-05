@@ -8,7 +8,7 @@ services:
     ports:
       - 5173:5173 
     volumes:
-      - frontend_dist:/app/dist   
+      - frontend_dist:/app/dist
     networks:
       - frontend_backend_network
 
@@ -51,6 +51,8 @@ services:
 
 volumes:
   postgres_data:
+  frontend_dist:
+    driver: local  
 
 networks:
   frontend_backend_network:
