@@ -40,7 +40,8 @@ public class EducationServiceImpl implements EducationService{
     }
 
     @Override
-    public List<EducationListResponse> getEduByClientId(UUID userId) {
+    public List<EducationListResponse> getEduByClientId() {
+        UUID userId = tokenService.getCurrentUserId();
         return educationMapper.toResponseList(educationRepository.findAllByUserId(userId));
     }
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface EducationService {
     UUID createNewEdu(EducationRequest educationRequest);
-    List<EducationListResponse> getEduByClientId(UUID userId);
+    List<EducationListResponse> getEduByClientId();
     EducationResponse getEduByEduId(UUID eduId);
     Education getEduByEduIdLocal(UUID eduId);
 }

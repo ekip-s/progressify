@@ -8,10 +8,9 @@ import Education from "../molecule/Education.jsx";
 
 const EducationList = () => {
   const dispatchActions = useDispatch();
-  const clientId = useSelector((state) => state.auth.clientId);
   const token = useSelector((state) => state.auth.token);
   const { data, setData } = useHTTP({
-    url: `/education/api/v1/userId/${clientId}`,
+    url: `/education/api/v1`,
     method: "GET",
     body: null,
     token,
