@@ -40,6 +40,7 @@ const send = async ({
     }
   } catch (err) {
     console.log(err.message);
+    throw new Error(`Ошибка выполнения запроса`);
   }
 };
 

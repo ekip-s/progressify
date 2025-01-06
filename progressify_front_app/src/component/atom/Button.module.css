@@ -6,6 +6,7 @@
     font-size: 15px;
     height: max-content;
     letter-spacing: 1.5px;
+    cursor: pointer;
 }
 
 .button:hover {

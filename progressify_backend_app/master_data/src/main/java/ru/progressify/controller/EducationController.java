@@ -51,4 +51,14 @@ public class EducationController {
         log.info("GET: EducationController getEduByEduId, параметры: eduId={}", eduId);
         return educationService.getEduByEduId(eduId);
     }
+
+    @Operation(
+            summary = "Удаление урока по id",
+            description = ""
+    )
+    @DeleteMapping("/eduId/{eduId}")
+    public void deleteEduByEduId(@PathVariable UUID eduId) {
+        log.info("DELETE: EducationController deleteEduByEduId, параметры: eduId={}", eduId);
+        educationService.deleteEduByEduId(eduId);
+    }
 }
