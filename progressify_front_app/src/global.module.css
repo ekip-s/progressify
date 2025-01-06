@@ -23,3 +23,8 @@
 .jcCenter {
     justify-content: center;
 }
+
+.leftAndRight{
+    margin-left: 7%;
+    margin-right: 7%;
+}
