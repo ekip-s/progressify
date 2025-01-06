@@ -27,6 +27,24 @@ const EducationInfo = () => {
     dispatchActions(pageActions.clearPage());
   };
 
+  const deletePageHandler = () => {
+    const isConfirmed = window.confirm(
+      `Вы действительно хотиете удалить обучение: ${data.name}?`,
+    );
+
+    if (isConfirmed) {
+      send({
+        url: `/education/api/v1/eduId/${data.id}`,
+        method: "DELETE",
+        body: undefined,
+        token,
+        headers: {},
+        setDataInfo: undefined,
+        dataType: undefined,
+      }).then(closePageHandler);
+    }
+  };
+
   const setBlockHandler = (newBlock) => {
     setData((prevData) => ({
       ...prevData,
@@ -63,7 +81,15 @@ const EducationInfo = () => {
             <h2>{data.name}</h2>
             <p>{data.description}</p>
           </div>
-          <ClosingButton onClick={closePageHandler} />
+          <div>
+            <Button
+              className={styles.deleteBTN}
+              type="button"
+              text="Удалить"
+              onClick={deletePageHandler}
+            />
+            <ClosingButton onClick={closePageHandler} />
+          </div>
         </div>
       </section>
       <section className={styles.trainingBlock}>

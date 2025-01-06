@@ -16,3 +16,9 @@
     padding: 7px;
     color: var(--text_app_color_2);
 }
+
+.deleteBTN {
+    margin-right: 9px;
+    background-color: rgba(159, 71, 71, 0.94);
+    color: var(--text_app_color_2);
+}

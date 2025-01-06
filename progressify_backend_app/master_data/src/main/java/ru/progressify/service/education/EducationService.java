@@ -13,4 +13,5 @@ public interface EducationService {
     List<EducationListResponse> getEduByClientId();
     EducationResponse getEduByEduId(UUID eduId);
     Education getEduByEduIdLocal(UUID eduId);
+    void deleteEduByEduId(UUID eduId);
 }

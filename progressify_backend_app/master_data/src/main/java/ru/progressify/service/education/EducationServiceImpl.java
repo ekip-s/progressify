@@ -61,4 +61,10 @@ public class EducationServiceImpl implements EducationService{
         return educationRepository.findById(eduId).orElseThrow(() -> new NotFoundException(
                 "Нет обучения с указанным id", "Нет данных"));
     }
+
+    @Override
+    @Transactional
+    public void deleteEduByEduId(UUID eduId) {
+        educationRepository.deleteById(eduId);
+    }
 }
