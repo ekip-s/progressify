@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router";
 import Header from "./component/organism/header/Header.jsx";
 import HomePage from "./component/page/HomePage.jsx";
 import MainRouter from "./component/molecule/MainRouter.jsx";
+import Footer from "./component/organism/footer/Footer.jsx";
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
             </Routes>
           </div>
         </main>
-        <footer className={styles.footer}>footer</footer>
+        <Footer />
       </div>
     </Router>
   );
