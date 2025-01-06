@@ -36,10 +36,10 @@ public class EducationController {
             summary = "Получение записей по клиенту",
             description = ""
     )
-    @GetMapping("/userId/{userId}")
-    public List<EducationListResponse> getEduByClientId(@PathVariable UUID userId) {
-        log.info("GET: EducationController getEduByClientId, параметры: userId={}", userId);
-        return educationService.getEduByClientId(userId);
+    @GetMapping
+    public List<EducationListResponse> getEduByClientId() {
+        log.info("GET: EducationController getEduByClientId");
+        return educationService.getEduByClientId();
     }
 
     @Operation(
