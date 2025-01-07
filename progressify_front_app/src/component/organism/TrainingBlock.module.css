@@ -12,6 +12,9 @@
     content: '';
 }
 
-.trainingBlock {
+.trainingBlock summary {
     margin-top: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

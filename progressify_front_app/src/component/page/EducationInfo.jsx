@@ -81,7 +81,7 @@ const EducationInfo = () => {
             <h2>{data.name}</h2>
             <p>{data.description}</p>
           </div>
-          <div>
+          <div className={styles.btnDiv}>
             <Button
               className={styles.deleteBTN}
               type="button"

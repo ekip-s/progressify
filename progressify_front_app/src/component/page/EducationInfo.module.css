@@ -22,3 +22,7 @@
     background-color: rgba(159, 71, 71, 0.94);
     color: var(--text_app_color_2);
 }
+
+.btnDiv {
+    width: 130px;
+}
