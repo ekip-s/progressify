@@ -5,7 +5,7 @@ import LessonsList from "./LessonsList.jsx";
 import ProgressBar from "../molecule/ProgressBar.jsx";
 
 const TrainingBlock = ({ block, setData }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(checkLessonsStatus(block));
 
   const toggleDetails = () => {
     setIsOpen(!isOpen);
@@ -33,6 +33,15 @@ const TrainingBlock = ({ block, setData }) => {
   );
 };
 
+const checkLessonsStatus = (block) => {
+  const lessons = block.lessons;
+  if (lessons.length === 0) {
+    return true;
+  }
+
+  return lessons.some((lesson) => lesson.status !== "DONE");
+};
+
 TrainingBlock.propTypes = {
   block: PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -42,8 +51,8 @@ TrainingBlock.propTypes = {
         id: PropTypes.string.isRequired,
         status: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        startAT: PropTypes.number,
-        endAT: PropTypes.number,
+        startAT: PropTypes.string,
+        endAT: PropTypes.string,
       }),
     ),
   }),
