@@ -25,6 +25,8 @@ public class EducationListResponse {
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime endAT;
     private StatusType status;
+    private Integer total;
+    private Integer doneEdu;
 
     @Override
     public boolean equals(Object o) {

@@ -6,10 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.progressify.ConflictException;
 import ru.progressify.NotFoundException;
 import ru.progressify.StatusType;
+import ru.progressify.kafka.EventType;
+import ru.progressify.kafka.KafkaEvent;
 import ru.progressify.lesson.Lesson;
 import ru.progressify.lesson.LessonRequest;
 import ru.progressify.lesson.LessonResponse;
 import ru.progressify.mapper.LessonMapper;
+import ru.progressify.producers.KafkaProducerService;
 import ru.progressify.repository.LessonRepository;
 import ru.progressify.service.TokenService;
 import ru.progressify.service.training_block.TrainingBlockService;
@@ -24,13 +27,15 @@ public class LessonServiceImpl implements LessonService {
 
     private final LessonRepository lessonRepository;
     private final TrainingBlockService trainingBlockService;
+    private final KafkaProducerService kafkaProducerService;
     private final LessonMapper lessonMapper;
     private final TokenService tokenService;
 
     @Autowired
-    public LessonServiceImpl(LessonRepository lessonRepository, TrainingBlockService trainingBlockService, LessonMapper lessonMapper, TokenService tokenService) {
+    public LessonServiceImpl(LessonRepository lessonRepository, TrainingBlockService trainingBlockService, KafkaProducerService kafkaProducerService, LessonMapper lessonMapper, TokenService tokenService) {
         this.lessonRepository = lessonRepository;
         this.trainingBlockService = trainingBlockService;
+        this.kafkaProducerService = kafkaProducerService;
         this.lessonMapper = lessonMapper;
         this.tokenService = tokenService;
     }
@@ -40,7 +45,9 @@ public class LessonServiceImpl implements LessonService {
     public LessonResponse addNewLesson(LessonRequest lessonRequest) {
         TrainingBlock block = trainingBlockService.getBlockById(lessonRequest.getBlockId());
         Lesson lesson = new Lesson(lessonRequest, block);
-        return lessonMapper.toResponse(lessonRepository.save(lesson));
+        LessonResponse lessonResponse = lessonMapper.toResponse(lessonRepository.save(lesson));
+        kafkaProducerService.sendMessage(new KafkaEvent(EventType.NEW_LESSON, lessonResponse.getId()));
+        return lessonResponse;
     }
 
     @Override

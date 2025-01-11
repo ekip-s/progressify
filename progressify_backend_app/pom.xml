@@ -20,6 +20,7 @@
         <module>master_data</module>
         <module>exception_data</module>
         <module>model_data</module>
+        <module>kafka_reader</module>
     </modules>
 
     <properties>

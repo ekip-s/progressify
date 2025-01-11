@@ -42,6 +42,10 @@ public class Education {
     private LocalDateTime endAT;
     @Enumerated(EnumType.ORDINAL)
     private StatusType status;
+    @Column(name = "total")
+    private Integer total;
+    @Column(name = "done_edu")
+    private Integer doneEdu;
     @OneToMany(mappedBy = "education", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TrainingBlock> blocks;
 
@@ -49,6 +53,8 @@ public class Education {
         this.userId = userId;
         this.createdAT = LocalDateTime.now();
         this.status = StatusType.NEW;
+        this.total = 0;
+        this.doneEdu = 0;
         return this;
     }
 

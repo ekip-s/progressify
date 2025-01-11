@@ -1,4 +1,60 @@
 services:
+  progressify_backend:
+    build:
+      context: .
+      dockerfile: progressify_backend_app/master_data/Dockerfile
+    depends_on:
+      - progressify_database
+      - kafka
+      - keycloak
+    ports:
+      - "8081:8081"
+    environment:
+      - POSTGRES_DB=${APP_POSTGRES_DB}
+      - POSTGRES_USER=${APP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${APP_POSTGRES_PASSWORD}
+      - ENV=${ENV}
+    networks:
+      - database_network
+      - kafka-network
+      - keycloak_network
+
+  kafka_reader:  
+    build:
+      context: .
+      dockerfile: progressify_backend_app/kafka_reader/Dockerfile
+    depends_on:
+      - progressify_database
+      - kafka
+    environment:
+      - POSTGRES_DB=${APP_POSTGRES_DB}
+      - POSTGRES_USER=${APP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${APP_POSTGRES_PASSWORD}
+      - ENV=${ENV}
+    networks:
+      - database_network
+      - kafka-network  
+
+  progressify_database:
+    image: postgres:16.3
+    container_name: progressify_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${APP_POSTGRES_DB}
+      - POSTGRES_USER=${APP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${APP_POSTGRES_PASSWORD}
+    volumes:
+      - app_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${APP_POSTGRES_USER}", "-d", "progressify_database"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - database_network    
+
   keycloak-db:
     image: postgres:16.2
     container_name: keycloak_db
@@ -9,7 +65,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - postgresdata:/var/lib/postgresql/data
+      - kc_postgres_data:/var/lib/postgresql/data
     restart: always
 
   keycloak:
@@ -31,6 +87,8 @@ services:
     ports:
       - 8080:8080
     restart: always
+    networks:
+      - keycloak_network
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -77,7 +135,13 @@ services:
       - kafka-network  
 
 volumes:
-  postgresdata:
+  app_postgres_data:
+  kc_postgres_data:  
 
 networks:
   kafka-network:    
+    driver: bridge
+  database_network:
+    driver: bridge  
+  keycloak_network:  
+    driver: bridge

@@ -26,6 +26,8 @@ public class EducationResponse {
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime endAT;
     private StatusType status;
+    private Integer total;
+    private Integer doneEdu;
     private List<TrainingBlockResponse> blocks;
 
     @Override

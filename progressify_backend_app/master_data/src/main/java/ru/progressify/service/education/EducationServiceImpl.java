@@ -26,14 +26,13 @@ public class EducationServiceImpl implements EducationService{
     private final TokenService tokenService;
     private final EducationMapper educationMapper;
     private final EducationRepository educationRepository;
-    private final KafkaProducerService kafkaProducerService;
+
 
     @Autowired
     public EducationServiceImpl(TokenService tokenService, EducationMapper educationMapper, EducationRepository educationRepository, KafkaProducerService kafkaProducerService) {
         this.tokenService = tokenService;
         this.educationMapper = educationMapper;
         this.educationRepository = educationRepository;
-        this.kafkaProducerService = kafkaProducerService;
     }
 
     @Override
