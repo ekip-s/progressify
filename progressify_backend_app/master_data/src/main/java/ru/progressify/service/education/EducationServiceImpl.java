@@ -9,7 +9,10 @@ import ru.progressify.model.education.Education;
 import ru.progressify.model.education.EducationListResponse;
 import ru.progressify.model.education.EducationRequest;
 import ru.progressify.model.education.EducationResponse;
+import ru.progressify.model.kafka.EventType;
+import ru.progressify.model.kafka.KafkaEvent;
 import ru.progressify.model.mapper.EducationMapper;
+import ru.progressify.producers.KafkaProducerService;
 import ru.progressify.repository.EducationRepository;
 import ru.progressify.service.TokenService;
 
@@ -23,12 +26,14 @@ public class EducationServiceImpl implements EducationService{
     private final TokenService tokenService;
     private final EducationMapper educationMapper;
     private final EducationRepository educationRepository;
+    private final KafkaProducerService kafkaProducerService;
 
     @Autowired
-    public EducationServiceImpl(TokenService tokenService, EducationMapper educationMapper, EducationRepository educationRepository) {
+    public EducationServiceImpl(TokenService tokenService, EducationMapper educationMapper, EducationRepository educationRepository, KafkaProducerService kafkaProducerService) {
         this.tokenService = tokenService;
         this.educationMapper = educationMapper;
         this.educationRepository = educationRepository;
+        this.kafkaProducerService = kafkaProducerService;
     }
 
     @Override
@@ -66,5 +71,10 @@ public class EducationServiceImpl implements EducationService{
     @Transactional
     public void deleteEduByEduId(UUID eduId) {
         educationRepository.deleteById(eduId);
+    }
+
+    @Override
+    public void testKafkaEvent() {
+        kafkaProducerService.sendMessage(new KafkaEvent(EventType.TEST));
     }
 }

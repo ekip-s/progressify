@@ -43,6 +43,15 @@ public class EducationController {
     }
 
     @Operation(
+            summary = "Тест отправки событий кафки",
+            description = ""
+    )
+    @GetMapping("/kafka")
+    public void kafkaTest() {
+        educationService.testKafkaEvent();
+    }
+
+    @Operation(
             summary = "Получение урока по id",
             description = ""
     )
