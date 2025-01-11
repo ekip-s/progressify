@@ -5,9 +5,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.progressify.model.StatusType;
-import ru.progressify.model.lesson.LessonRequest;
-import ru.progressify.model.lesson.LessonResponse;
+import ru.progressify.StatusType;
+import ru.progressify.lesson.LessonRequest;
+import ru.progressify.lesson.LessonResponse;
 import ru.progressify.service.lesson.LessonService;
 
 import java.util.UUID;

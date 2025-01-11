@@ -1,15 +1,13 @@
-package ru.progressify.model.training_block;
+package ru.progressify.lesson;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.model.StatusType;
-import ru.progressify.model.education.Education;
-import ru.progressify.model.lesson.Lesson;
+import ru.progressify.StatusType;
+import ru.progressify.training_block.TrainingBlock;
+
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -19,8 +17,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="training_block")
-public class TrainingBlock {
+@Table(name="lesson")
+public class Lesson {
 
     @Id
     @Column(name="id")
@@ -31,8 +29,8 @@ public class TrainingBlock {
     @Column(name = "name")
     private String name;
     @ManyToOne
-    @JoinColumn(name = "edu_id")
-    private Education education;
+    @JoinColumn(name = "block_id")
+    private TrainingBlock block;
     @Column(name = "start_at")
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime startAT;
@@ -41,13 +39,11 @@ public class TrainingBlock {
     private LocalDateTime endAT;
     @Enumerated(EnumType.ORDINAL)
     private StatusType status;
-    @OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lesson> lessons = new ArrayList<>();
 
-    public TrainingBlock(Education education, TrainingBlockRequest trainingBlockRequest) {
-        this.num = trainingBlockRequest.getNum();
-        this.name = trainingBlockRequest.getName();
-        this.education = education;
+    public Lesson(LessonRequest lessonRequest, TrainingBlock block) {
+        this.num = lessonRequest.getNum();
+        this.name = lessonRequest.getName();
+        this.block = block;
         this.status = StatusType.NEW;
     }
 
@@ -55,8 +51,8 @@ public class TrainingBlock {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        TrainingBlock that = (TrainingBlock) o;
-        return Objects.equals(id, that.id);
+        Lesson lesson = (Lesson) o;
+        return Objects.equals(id, lesson.id);
     }
 
     @Override
@@ -64,5 +60,3 @@ public class TrainingBlock {
         return Objects.hashCode(id);
     }
 }
-
-

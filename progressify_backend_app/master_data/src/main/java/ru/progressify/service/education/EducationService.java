@@ -1,9 +1,9 @@
 package ru.progressify.service.education;
 
-import ru.progressify.model.education.Education;
-import ru.progressify.model.education.EducationListResponse;
-import ru.progressify.model.education.EducationRequest;
-import ru.progressify.model.education.EducationResponse;
+import ru.progressify.education.Education;
+import ru.progressify.education.EducationListResponse;
+import ru.progressify.education.EducationRequest;
+import ru.progressify.education.EducationResponse;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,5 +14,4 @@ public interface EducationService {
     EducationResponse getEduByEduId(UUID eduId);
     Education getEduByEduIdLocal(UUID eduId);
     void deleteEduByEduId(UUID eduId);
-    void testKafkaEvent();
 }

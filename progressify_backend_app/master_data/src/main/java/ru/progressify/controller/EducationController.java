@@ -5,9 +5,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.progressify.model.education.EducationListResponse;
-import ru.progressify.model.education.EducationRequest;
-import ru.progressify.model.education.EducationResponse;
+import ru.progressify.education.EducationListResponse;
+import ru.progressify.education.EducationRequest;
+import ru.progressify.education.EducationResponse;
 import ru.progressify.service.education.EducationService;
 
 import java.util.List;
@@ -40,15 +40,6 @@ public class EducationController {
     public List<EducationListResponse> getEduByClientId() {
         log.info("GET: EducationController getEduByClientId");
         return educationService.getEduByClientId();
-    }
-
-    @Operation(
-            summary = "Тест отправки событий кафки",
-            description = ""
-    )
-    @GetMapping("/kafka")
-    public void kafkaTest() {
-        educationService.testKafkaEvent();
     }
 
     @Operation(

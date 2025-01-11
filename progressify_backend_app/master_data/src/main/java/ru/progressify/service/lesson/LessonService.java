@@ -1,8 +1,8 @@
 package ru.progressify.service.lesson;
 
-import ru.progressify.model.StatusType;
-import ru.progressify.model.lesson.LessonRequest;
-import ru.progressify.model.lesson.LessonResponse;
+import ru.progressify.StatusType;
+import ru.progressify.lesson.LessonRequest;
+import ru.progressify.lesson.LessonResponse;
 
 import java.util.UUID;
 

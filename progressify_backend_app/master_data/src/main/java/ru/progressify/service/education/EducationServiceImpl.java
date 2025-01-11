@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.progressify.ConflictException;
 import ru.progressify.NotFoundException;
-import ru.progressify.model.education.Education;
-import ru.progressify.model.education.EducationListResponse;
-import ru.progressify.model.education.EducationRequest;
-import ru.progressify.model.education.EducationResponse;
-import ru.progressify.model.kafka.EventType;
-import ru.progressify.model.kafka.KafkaEvent;
-import ru.progressify.model.mapper.EducationMapper;
+import ru.progressify.education.Education;
+import ru.progressify.education.EducationListResponse;
+import ru.progressify.education.EducationRequest;
+import ru.progressify.education.EducationResponse;
+import ru.progressify.kafka.EventType;
+import ru.progressify.kafka.KafkaEvent;
+import ru.progressify.mapper.EducationMapper;
 import ru.progressify.producers.KafkaProducerService;
 import ru.progressify.repository.EducationRepository;
 import ru.progressify.service.TokenService;
@@ -71,10 +71,5 @@ public class EducationServiceImpl implements EducationService{
     @Transactional
     public void deleteEduByEduId(UUID eduId) {
         educationRepository.deleteById(eduId);
-    }
-
-    @Override
-    public void testKafkaEvent() {
-        kafkaProducerService.sendMessage(new KafkaEvent(EventType.TEST));
     }
 }

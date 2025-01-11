@@ -1,4 +1,4 @@
-package ru.progressify.model.training_block;
+package ru.progressify.training_block;
 
 import lombok.*;
 

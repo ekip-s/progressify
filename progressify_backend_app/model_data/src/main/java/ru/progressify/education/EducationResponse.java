@@ -1,9 +1,9 @@
-package ru.progressify.model.education;
+package ru.progressify.education;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.model.StatusType;
-import ru.progressify.model.training_block.TrainingBlockResponse;
+import ru.progressify.StatusType;
+import ru.progressify.training_block.TrainingBlockResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;

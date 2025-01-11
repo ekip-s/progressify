@@ -5,14 +5,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.progressify.ConflictException;
 import ru.progressify.NotFoundException;
-import ru.progressify.model.education.Education;
-import ru.progressify.model.mapper.TrainingBlockMapper;
-import ru.progressify.model.training_block.TrainingBlock;
-import ru.progressify.model.training_block.TrainingBlockRequest;
-import ru.progressify.model.training_block.TrainingBlockResponse;
+
+import ru.progressify.education.Education;
+import ru.progressify.mapper.TrainingBlockMapper;
 import ru.progressify.repository.TrainingBlockRepository;
 import ru.progressify.service.TokenService;
 import ru.progressify.service.education.EducationService;
+import ru.progressify.training_block.TrainingBlock;
+import ru.progressify.training_block.TrainingBlockRequest;
+import ru.progressify.training_block.TrainingBlockResponse;
 
 import java.util.UUID;
 

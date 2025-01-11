@@ -1,4 +1,4 @@
-package ru.progressify.model.kafka;
+package ru.progressify.kafka;
 
 public enum EventType {
     TEST

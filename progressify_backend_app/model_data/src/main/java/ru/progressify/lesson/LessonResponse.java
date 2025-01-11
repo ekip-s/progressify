@@ -1,8 +1,8 @@
-package ru.progressify.model.lesson;
+package ru.progressify.lesson;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.model.StatusType;
+import ru.progressify.StatusType;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
