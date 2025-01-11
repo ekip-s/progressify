@@ -473,7 +473,7 @@
             "enabled": true,
             "alwaysDisplayInConsole": false,
             "clientAuthenticatorType": "client-secret",
-            "secret": "TfYXdTDgfXG0piZNvgVjfBDcfGVlvbCw",
+            "secret": "vHYMEC9YZruvX2M0KnCfmP1Rk1NFXkVx",
             "redirectUris":
             [
                 "http://localhost:8081/*"
