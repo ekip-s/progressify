@@ -13,7 +13,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -58,5 +57,18 @@ public class Lesson {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "id=" + id +
+                ", num=" + num +
+                ", name='" + name + '\'' +
+                ", block=" + block +
+                ", startAT=" + startAT +
+                ", endAT=" + endAT +
+                ", status=" + status +
+                '}';
     }
 }
