@@ -61,20 +61,4 @@ public class EducationController {
         log.info("DELETE: EducationController deleteEduByEduId, параметры: eduId={}", eduId);
         educationService.deleteEduByEduId(eduId);
     }
-
-    @Operation(
-            summary = "Обновление всех данных в новой логике",
-            description = ""
-    )
-    @PostMapping("/set/all")
-    public String setAllEdu() {
-        try {
-            educationService.setAllEdu();
-        } catch (Exception e) {
-            System.out.println(e);
-            throw new RuntimeException(e);
-        }
-
-        return "Сделаль";
-    }
 }
