@@ -74,7 +74,7 @@ services:
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: keycloak-db
-      DB_DATABASE: ${DB_DATABASE}
+      DB_DATABASE: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
