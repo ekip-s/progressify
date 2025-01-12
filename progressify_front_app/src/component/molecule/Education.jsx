@@ -3,6 +3,7 @@ import { formatDateTime } from "../../master_logic/data-time-logic.js";
 import { useDispatch } from "react-redux";
 import { pageActions } from "../../store/page-slice.js";
 import PropTypes from "prop-types";
+import ProgressBar from "./ProgressBar.jsx";
 
 const Education = ({ edu }) => {
   const dispatchActions = useDispatch();
@@ -33,7 +34,13 @@ const Education = ({ edu }) => {
       <td>{getNameLink()}</td>
       <td>{getCreatedAT()}</td>
       <td>{getEndAT()}</td>
-      <td></td>
+      <td>
+        <ProgressBar
+          totalTasks={edu.total}
+          completedTasks={edu.doneEdu}
+          isShowText={false}
+        />
+      </td>
     </tr>
   );
 };
@@ -45,6 +52,8 @@ Education.propTypes = {
     description: PropTypes.string,
     startAT: PropTypes.string,
     endAT: PropTypes.string,
+    total: PropTypes.number.isRequired,
+    doneEdu: PropTypes.number.isRequired,
   }).isRequired,
 };
 

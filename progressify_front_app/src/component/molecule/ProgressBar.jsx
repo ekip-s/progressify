@@ -1,7 +1,7 @@
 import styles from "./ProgressBar.module.css";
 import PropTypes from "prop-types";
 
-const ProgressBar = ({ totalTasks, completedTasks }) => {
+const ProgressBar = ({ totalTasks, completedTasks, isShowText = true }) => {
   const percentage =
     totalTasks === 0 ? 0 : Math.min((completedTasks / totalTasks) * 100, 100);
 
@@ -18,7 +18,7 @@ const ProgressBar = ({ totalTasks, completedTasks }) => {
     <div className={styles.container}>
       <div className={styles.heading}>
         <strong>
-          {completedTasks}/{totalTasks} уроков завершено
+          {completedTasks}/{totalTasks} {isShowText && "уроков завершено"}
         </strong>
       </div>
 
@@ -42,6 +42,7 @@ const ProgressBar = ({ totalTasks, completedTasks }) => {
 ProgressBar.propTypes = {
   totalTasks: PropTypes.number.isRequired,
   completedTasks: PropTypes.number.isRequired,
+  isShowText: PropTypes.bool,
 };
 
 export default ProgressBar;
