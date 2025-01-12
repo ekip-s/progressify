@@ -14,4 +14,5 @@ public interface EducationService {
     EducationResponse getEduByEduId(UUID eduId);
     Education getEduByEduIdLocal(UUID eduId);
     void deleteEduByEduId(UUID eduId);
+    void setAllEdu();
 }

@@ -61,4 +61,14 @@ public class EducationController {
         log.info("DELETE: EducationController deleteEduByEduId, параметры: eduId={}", eduId);
         educationService.deleteEduByEduId(eduId);
     }
+
+    @Operation(
+            summary = "Обновление всех данных в новой логике",
+            description = ""
+    )
+    @PostMapping("/set/all")
+    public String setAllEdu() {
+        educationService.setAllEdu();
+        return "Сделаль";
+    }
 }

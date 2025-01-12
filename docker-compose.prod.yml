@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: progressify_backend_app/master_data/Dockerfile
     depends_on:
-      - postgres
+      - progressify_database
       - kafka
     ports:
       - "8081:8081"
