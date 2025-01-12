@@ -69,4 +69,20 @@ public class EducationServiceImpl implements EducationService{
     public void deleteEduByEduId(UUID eduId) {
         educationRepository.deleteById(eduId);
     }
+
+    @Override
+    @Transactional
+    public void setAllEdu() {
+        List<Education> educations = educationRepository.findAll();
+        // Нужно заполнить:
+
+        // Всего уроков
+        // Выполненные задачи;
+        // Дата старта EDU, если есть хоть одна задача с датой старта, нужно заполнить самую ранюю дата начала;
+        // Дата завершения обучения, если всего уроков не 0 и всего уроков == завершенным урокам;
+
+        // Дата начала блока == если есть хоть одна задача не в NEW; И нужна самая старая задача в рамках блока;
+        // Дата завершения блока, если все задачи в блоке == DONE и задачи в принципе есть; И нужна самая новая запись в блоке;
+
+    }
 }
