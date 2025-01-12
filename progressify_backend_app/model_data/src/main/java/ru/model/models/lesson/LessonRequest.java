@@ -1,4 +1,5 @@
-package ru.progressify.training_block;
+package ru.model.models.lesson;
+
 
 import lombok.*;
 
@@ -10,21 +11,21 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingBlockRequest {
+public class LessonRequest {
 
     private Integer num;
     private String name;
-    private UUID eduId;
+    private UUID blockId;
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        TrainingBlockRequest that = (TrainingBlockRequest) o;
-        return Objects.equals(num, that.num) && Objects.equals(name, that.name) && Objects.equals(eduId, that.eduId);
+        LessonRequest that = (LessonRequest) o;
+        return Objects.equals(num, that.num) && Objects.equals(name, that.name) && Objects.equals(blockId, that.blockId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(num, name, eduId);
+        return Objects.hash(num, name, blockId);
     }
 }

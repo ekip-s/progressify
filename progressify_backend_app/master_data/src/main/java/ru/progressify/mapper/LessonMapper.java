@@ -1,8 +1,8 @@
 package ru.progressify.mapper;
 
 import org.mapstruct.Mapper;
-import ru.progressify.lesson.Lesson;
-import ru.progressify.lesson.LessonResponse;
+import ru.model.models.lesson.Lesson;
+import ru.model.models.lesson.LessonResponse;
 
 
 @Mapper(componentModel = "spring")

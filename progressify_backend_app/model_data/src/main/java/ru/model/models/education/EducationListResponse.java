@@ -1,12 +1,11 @@
-package ru.progressify.education;
+package ru.model.models.education;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.StatusType;
-import ru.progressify.training_block.TrainingBlockResponse;
+import ru.model.models.StatusType;
+
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,7 +14,7 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EducationResponse {
+public class EducationListResponse {
 
     private UUID id;
     private String name;
@@ -28,12 +27,11 @@ public class EducationResponse {
     private StatusType status;
     private Integer total;
     private Integer doneEdu;
-    private List<TrainingBlockResponse> blocks;
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        EducationResponse that = (EducationResponse) o;
+        EducationListResponse that = (EducationListResponse) o;
         return Objects.equals(id, that.id);
     }
 

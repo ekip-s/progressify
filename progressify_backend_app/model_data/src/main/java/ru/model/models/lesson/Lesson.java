@@ -1,10 +1,10 @@
-package ru.progressify.lesson;
+package ru.model.models.lesson;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.StatusType;
-import ru.progressify.training_block.TrainingBlock;
+import ru.model.models.StatusType;
+import ru.model.models.training_block.TrainingBlock;
 
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package ru.progressify.education;
+package ru.model.models.education;
 
 import lombok.*;
 

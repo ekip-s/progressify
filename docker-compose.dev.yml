@@ -18,6 +18,7 @@ services:
       - database_network
       - kafka-network
       - keycloak_network
+    restart: always  
 
   kafka_reader:  
     build:
@@ -34,12 +35,11 @@ services:
     networks:
       - database_network
       - kafka-network  
+    restart: always  
 
   progressify_database:
     image: postgres:16.3
     container_name: progressify_database
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_DB=${APP_POSTGRES_DB}
       - POSTGRES_USER=${APP_POSTGRES_USER}
@@ -53,13 +53,12 @@ services:
       start_period: 30s
       timeout: 10s
     networks:
-      - database_network    
+      - database_network   
+    restart: always   
 
   keycloak-db:
     image: postgres:16.2
     container_name: keycloak_db
-    ports:
-      - "6541:5432"
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -95,9 +94,7 @@ services:
     container_name: zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - "2181:2181"  
+      ZOOKEEPER_TICK_TIME: 2000  
     restart: always  
     networks:
       - kafka-network
@@ -107,8 +104,6 @@ services:
     container_name: kafka
     depends_on:
       - zookeeper
-    ports:
-      - "9092:9092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181

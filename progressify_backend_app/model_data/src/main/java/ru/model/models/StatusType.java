@@ -1,4 +1,4 @@
-package ru.progressify;
+package ru.model.models;
 
 public enum StatusType {
     NEW,

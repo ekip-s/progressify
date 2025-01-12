@@ -1,4 +1,4 @@
-package ru.progressify;
+package ru.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class BadRequestException extends RuntimeException {
+public class NotFoundException extends RuntimeException {
 
     private final String reason;
     private final LocalDateTime timestamp;
 
-    public BadRequestException(String message, String reason) {
+    public NotFoundException(String message, String reason) {
         super(message);
         this.reason = reason;
         this.timestamp = LocalDateTime.now();

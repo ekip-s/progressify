@@ -1,10 +1,10 @@
 package ru.progressify.mapper;
 
 import org.mapstruct.Mapper;
-import ru.progressify.education.Education;
-import ru.progressify.education.EducationListResponse;
-import ru.progressify.education.EducationRequest;
-import ru.progressify.education.EducationResponse;
+import ru.model.models.education.Education;
+import ru.model.models.education.EducationListResponse;
+import ru.model.models.education.EducationRequest;
+import ru.model.models.education.EducationResponse;
 
 
 import java.util.List;

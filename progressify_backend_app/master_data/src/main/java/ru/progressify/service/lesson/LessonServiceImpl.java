@@ -3,20 +3,20 @@ package ru.progressify.service.lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.progressify.ConflictException;
-import ru.progressify.NotFoundException;
-import ru.progressify.StatusType;
-import ru.progressify.kafka.EventType;
-import ru.progressify.kafka.KafkaEvent;
-import ru.progressify.lesson.Lesson;
-import ru.progressify.lesson.LessonRequest;
-import ru.progressify.lesson.LessonResponse;
+import ru.exception.ConflictException;
+import ru.exception.NotFoundException;
+import ru.model.models.StatusType;
+import ru.model.models.kafka.EventType;
+import ru.model.models.kafka.KafkaEvent;
+import ru.model.models.lesson.Lesson;
+import ru.model.models.lesson.LessonRequest;
+import ru.model.models.lesson.LessonResponse;
 import ru.progressify.mapper.LessonMapper;
 import ru.progressify.producers.KafkaProducerService;
-import ru.progressify.repository.LessonRepository;
+import ru.model.repository.LessonRepository;
 import ru.progressify.service.TokenService;
 import ru.progressify.service.training_block.TrainingBlockService;
-import ru.progressify.training_block.TrainingBlock;
+import ru.model.models.training_block.TrainingBlock;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -65,6 +65,7 @@ public class LessonServiceImpl implements LessonService {
         }
 
         lessonRepository.save(lesson);
+        kafkaProducerService.sendMessage(new KafkaEvent(EventType.SET_STATUS, lessonId, status));
     }
 
     private Lesson getLessonById(UUID lessonId) {

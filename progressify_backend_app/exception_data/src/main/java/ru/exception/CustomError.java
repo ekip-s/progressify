@@ -1,4 +1,4 @@
-package ru.progressify;
+package ru.exception;
 
 import lombok.Builder;
 import lombok.Data;

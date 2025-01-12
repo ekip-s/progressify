@@ -1,8 +1,8 @@
 package ru.progressify.service.training_block;
 
-import ru.progressify.training_block.TrainingBlock;
-import ru.progressify.training_block.TrainingBlockRequest;
-import ru.progressify.training_block.TrainingBlockResponse;
+import ru.model.models.training_block.TrainingBlock;
+import ru.model.models.training_block.TrainingBlockRequest;
+import ru.model.models.training_block.TrainingBlockResponse;
 
 import java.util.UUID;
 

@@ -6,10 +6,11 @@
     <parent>
         <groupId>ru.progressify</groupId>
         <artifactId>progressify_backend_app</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>master_data</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -54,14 +55,14 @@
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>ru.progressify</groupId>
+            <groupId>ru.exception</groupId>
             <artifactId>exception_data</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>ru.progressify</groupId>
+            <groupId>ru.model</groupId>
             <artifactId>model_data</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>

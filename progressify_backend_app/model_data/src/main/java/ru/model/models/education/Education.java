@@ -1,10 +1,10 @@
-package ru.progressify.education;
+package ru.model.models.education;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.progressify.StatusType;
-import ru.progressify.training_block.TrainingBlock;
+import ru.model.models.StatusType;
+import ru.model.models.training_block.TrainingBlock;
 
 
 import java.time.LocalDateTime;
@@ -56,6 +56,14 @@ public class Education {
         this.total = 0;
         this.doneEdu = 0;
         return this;
+    }
+
+    public void newLesson() {
+        this.total += 1;
+    }
+
+    public void doneLesson() {
+        this.doneEdu += 1;
     }
 
     @Override
