@@ -68,7 +68,13 @@ public class EducationController {
     )
     @PostMapping("/set/all")
     public String setAllEdu() {
-        educationService.setAllEdu();
+        try {
+            educationService.setAllEdu();
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+
         return "Сделаль";
     }
 }
