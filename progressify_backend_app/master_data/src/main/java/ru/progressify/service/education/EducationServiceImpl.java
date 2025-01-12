@@ -3,14 +3,15 @@ package ru.progressify.service.education;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.progressify.ConflictException;
-import ru.progressify.NotFoundException;
-import ru.progressify.model.education.Education;
-import ru.progressify.model.education.EducationListResponse;
-import ru.progressify.model.education.EducationRequest;
-import ru.progressify.model.education.EducationResponse;
-import ru.progressify.model.mapper.EducationMapper;
-import ru.progressify.repository.EducationRepository;
+import ru.exception.ConflictException;
+import ru.exception.NotFoundException;
+import ru.model.models.education.Education;
+import ru.model.models.education.EducationListResponse;
+import ru.model.models.education.EducationRequest;
+import ru.model.models.education.EducationResponse;
+import ru.progressify.mapper.EducationMapper;
+import ru.progressify.producers.KafkaProducerService;
+import ru.model.repository.EducationRepository;
 import ru.progressify.service.TokenService;
 
 import java.util.List;
@@ -24,8 +25,9 @@ public class EducationServiceImpl implements EducationService{
     private final EducationMapper educationMapper;
     private final EducationRepository educationRepository;
 
+
     @Autowired
-    public EducationServiceImpl(TokenService tokenService, EducationMapper educationMapper, EducationRepository educationRepository) {
+    public EducationServiceImpl(TokenService tokenService, EducationMapper educationMapper, EducationRepository educationRepository, KafkaProducerService kafkaProducerService) {
         this.tokenService = tokenService;
         this.educationMapper = educationMapper;
         this.educationRepository = educationRepository;

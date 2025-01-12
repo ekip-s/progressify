@@ -1,9 +1,9 @@
 package ru.progressify.service.education;
 
-import ru.progressify.model.education.Education;
-import ru.progressify.model.education.EducationListResponse;
-import ru.progressify.model.education.EducationRequest;
-import ru.progressify.model.education.EducationResponse;
+import ru.model.models.education.Education;
+import ru.model.models.education.EducationListResponse;
+import ru.model.models.education.EducationRequest;
+import ru.model.models.education.EducationResponse;
 
 import java.util.List;
 import java.util.UUID;

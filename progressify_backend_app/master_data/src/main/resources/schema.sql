@@ -3,6 +3,8 @@ CREATE TABLE if not exists education (
     name VARCHAR(50) NOT NULL,
     description VARCHAR(200),
     user_id UUID NOT NULL,
+    total INT DEFAULT 0,
+    done_edu INT DEFAULT 0,
     created_at TIMESTAMP,
     start_at TIMESTAMP,
     end_at TIMESTAMP,
@@ -10,6 +12,14 @@ CREATE TABLE if not exists education (
 );
 
 CREATE INDEX if not exists idx_hash_user_id ON education USING hash (user_id);
+
+-- Добавление столбца 'total' если он не существует
+ALTER TABLE education
+    ADD COLUMN IF NOT EXISTS total INT DEFAULT 0;
+
+-- Добавление столбца 'done_edu' если он не существует
+ALTER TABLE education
+    ADD COLUMN IF NOT EXISTS done_edu INT DEFAULT 0;
 
 CREATE TABLE if not exists training_block (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

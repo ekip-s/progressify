@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.progressify.model.training_block.TrainingBlockRequest;
-import ru.progressify.model.training_block.TrainingBlockResponse;
+
 import ru.progressify.service.training_block.TrainingBlockService;
+import ru.model.models.training_block.TrainingBlockRequest;
+import ru.model.models.training_block.TrainingBlockResponse;
 
 @Slf4j
 @RestController

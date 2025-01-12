@@ -17,3 +17,27 @@
     border: 1px solid transparent;
     color: var(--text_app_color_2);
 }
+
+.notEdu {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: var(--text_app_color_2);
+}
+
+.loading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: var(--text_app_color_2);
+    animation: fade 1.5s infinite;
+}
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 1; /* Полная видимость */
+    }
+    50% {
+        opacity: 0.5; /* Полупрозрачность */
+    }
+}

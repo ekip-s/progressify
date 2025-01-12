@@ -9,13 +9,15 @@ services:
       - 5173:5173 
     networks:
       - frontend_backend_network
+    restart: always  
 
   progressify_backend:
     build:
       context: .
-      dockerfile: progressify_backend_app/Dockerfile
+      dockerfile: progressify_backend_app/master_data/Dockerfile
     depends_on:
       - postgres
+      - kafka
     ports:
       - "8081:8081"
     environment:
@@ -26,12 +28,29 @@ services:
     networks:
       - frontend_backend_network
       - database_network
+      - kafka-network
+    restart: always  
 
-  postgres:
+  kafka_reader:  
+    build:
+      context: .
+      dockerfile: progressify_backend_app/kafka_reader/Dockerfile
+    depends_on:
+      - progressify_database
+      - kafka
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - ENV=${ENV}
+    networks:
+      - database_network
+      - kafka-network  
+    restart: always    
+
+  progressify_database:
     image: postgres:16.3
     container_name: progressify_database
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -46,13 +65,42 @@ services:
       timeout: 10s
     networks:
       - database_network
+    restart: always  
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000  
+    restart: always  
+    networks:
+      - kafka-network  
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1  
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    restart: always  
+    networks:
+      - kafka-network    
 
 volumes:
   postgres_data:
   frontend_dist:
-    driver: local  
+    driver: local
 
 networks:
+  kafka-network:    
+    driver: bridge
   frontend_backend_network:
     driver: bridge
   database_network:
